@@ -103,6 +103,7 @@ AI-Fluency-Task1/
     ├── chatbot_output.png
     ├── workflow_output.png
     └── agent_output.png
+
 7. Technologies Used
 Python
 Groq API
@@ -111,6 +112,7 @@ python-dotenv
 Rule-based programming
 Function-based tools
 Agent loop
+
 8. Installation
 
 Install the required packages:
@@ -152,6 +154,7 @@ Output/
 ├── chatbot_output.png
 ├── workflow_output.png
 └── agent_output.png
+
 11. Analysis
 
 A detailed comparison of the three approaches is provided in:
@@ -168,6 +171,7 @@ Multi-step task handling
 Automation
 Reliability
 Suitability for the scenario
+
 12. Objective
 
 The objective of this project is to demonstrate the difference between a plain LLM chatbot, a deterministic rule-based workflow, and an AI agent that can use tools to interact with private data.
