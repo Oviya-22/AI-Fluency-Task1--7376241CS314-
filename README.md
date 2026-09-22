@@ -48,6 +48,14 @@ It can understand natural-language questions, but it cannot retrieve actual priv
 
 **File:** `chatbot.py`
 
+### Example Request
+
+```text
+Ask the chatbot: Is the 3D Printer available?
+```
+
+The chatbot responds without accessing the private college database.
+
 ---
 
 ## 4. System 2 – Rule-Based Workflow
@@ -56,13 +64,21 @@ The rule-based workflow does not use an LLM.
 
 It uses predefined conditions and rules to identify the request and execute the appropriate function.
 
-Examples:
+### Rules
 
-- Equipment name → check equipment availability
-- Student ID → retrieve booking details
-- Late hours → calculate fine
+- Equipment name → Check equipment availability
+- Student ID → Retrieve booking details
+- Late hours → Calculate fine
 
 **File:** `workflow.py`
+
+### Example Requests
+
+```text
+Is the 3D Printer available?
+Show booking details for S101
+What is the fine for 2 hours late?
+```
 
 ---
 
@@ -85,9 +101,23 @@ It can:
 check_equipment()
 get_booking_details()
 calculate_late_fine()
-File: agent.py
+```
 
-6. Project Structure
+**File:** `agent.py`
+
+### Example Request
+
+```text
+Ask the AI agent: Is the 3D Printer available?
+```
+
+The agent identifies the required tool, retrieves the private data, and generates a response using the tool result.
+
+---
+
+## 6. Project Structure
+
+```text
 AI-Fluency-Task1/
 │
 ├── chatbot.py
@@ -103,71 +133,201 @@ AI-Fluency-Task1/
     ├── chatbot_output.png
     ├── workflow_output.png
     └── agent_output.png
-7. Technologies Used
-Python
-Groq API
-OpenAI-compatible tool calling
-python-dotenv
-Rule-based programming
-Function-based tools
-Agent loop
-8. Installation
+```
 
-Install the required packages:
+---
 
+## 7. Technologies Used
+
+- Python
+- Groq API
+- OpenAI-compatible tool calling
+- python-dotenv
+- Rule-based programming
+- Function-based tools
+- Agent loop
+
+---
+
+## 8. Installation
+
+### Step 1 – Install Dependencies
+
+Run the following command:
+
+```bash
 python -m pip install -r requirements.txt
+```
 
-Create a .env file in the project folder:
+### Step 2 – Configure the API Key
 
+Create a `.env` file in the project folder:
+
+```text
 GROQ_API_KEY=YOUR_GROQ_API_KEY
+```
 
 The API key is stored locally and should not be uploaded to GitHub.
 
-9. Running the Project
-Plain Chatbot
+The `.gitignore` file prevents `.env` from being committed.
+
+---
+
+## 9. Running the Project
+
+### 9.1 Plain Chatbot
+
+Run:
+
+```bash
 python chatbot.py
+```
 
 Example:
 
+```text
 Ask the chatbot: Is the 3D Printer available?
-Rule-Based Workflow
+```
+
+The chatbot does not have access to the private college database.
+
+---
+
+### 9.2 Rule-Based Workflow
+
+Run:
+
+```bash
 python workflow.py
+```
 
-The workflow runs predefined test questions.
+The workflow uses predefined rules to process the test questions.
 
-AI Agent
+---
+
+### 9.3 AI Agent
+
+Run:
+
+```bash
 python agent.py
+```
 
 Example:
 
+```text
 Ask the AI agent: Is the 3D Printer available?
+```
 
-The terminal displays the selected tool, its arguments, the tool result, and the final response.
+The terminal displays:
 
-10. Output
+1. Selected tool
+2. Tool arguments
+3. Tool result
+4. Final agent response
 
-Screenshots of all three systems are stored in the Output folder:
+---
 
+## 10. Output
+
+Screenshots of all three systems are stored in the `Output` folder.
+
+```text
 Output/
 ├── chatbot_output.png
 ├── workflow_output.png
 └── agent_output.png
-11. Analysis
+```
+
+These screenshots provide execution evidence for the three approaches.
+
+### Output Screenshots
+
+- `chatbot_output.png` – Plain chatbot execution
+- `workflow_output.png` – Rule-based workflow execution
+- `agent_output.png` – AI agent execution
+
+---
+
+## 11. Analysis
 
 A detailed comparison of the three approaches is provided in:
 
+```text
 analysis.md
+```
 
 The analysis covers:
 
-Flexibility
-Decision-making
-Tool usage
-Private-data access
-Multi-step task handling
-Automation
-Reliability
-Suitability for the scenario
-12. Objective
+- Flexibility
+- Decision-making
+- Tool usage
+- Private-data access
+- Multi-step task handling
+- Automation
+- Reliability
+- Suitability for the scenario
 
-The objective of this project is to demonstrate the difference between a plain LLM chatbot, a deterministic rule-based workflow, and an AI agent that can use tools to interact with private data.
+---
+
+## 12. Objective
+
+The objective of this project is to demonstrate the difference between:
+
+- A plain LLM chatbot
+- A deterministic rule-based workflow
+- An AI agent that can use tools
+
+The project shows how the three approaches handle the same private-data scenario using different mechanisms.
+
+---
+
+## 13. Comparison
+
+| Feature | Plain Chatbot | Rule-Based Workflow | AI Agent |
+|---|---|---|---|
+| LLM Usage | Yes | No | Yes |
+| Private Data Access | No | Yes | Yes |
+| Tool Usage | No | Yes | Yes |
+| Decision Making | LLM response | Predefined rules | LLM-based tool selection |
+| Flexibility | Natural-language interaction | Limited to predefined rules | Handles varied requests |
+| Multi-Step Tasks | Limited | Predefined | Can perform multiple tool calls |
+| Automation | Conversational | Rule-driven | Tool-driven |
+| Reliability | Depends on model response | Deterministic rules | Depends on model and tools |
+
+---
+
+## 14. Key Learning
+
+This project demonstrates the progression from a simple LLM-based chatbot to a rule-based system and finally to an AI agent.
+
+The plain chatbot can understand natural-language requests but does not have access to the private college data.
+
+The rule-based workflow can access the private data through predefined rules, but its behavior depends on the conditions programmed by the developer.
+
+The AI agent combines an LLM with tools, allowing it to understand requests, select tools, retrieve private information, and generate responses based on the tool results.
+
+---
+
+## 15. Files Description
+
+| File | Purpose |
+|---|---|
+| `chatbot.py` | Implements the plain LLM chatbot |
+| `workflow.py` | Implements the rule-based workflow |
+| `tools.py` | Contains private data and reusable tools |
+| `agent.py` | Implements the AI agent and tool-calling loop |
+| `analysis.md` | Contains detailed comparison and suitability analysis |
+| `requirements.txt` | Contains required Python packages |
+| `.gitignore` | Prevents sensitive and unnecessary files from being committed |
+| `README.md` | Project documentation |
+| `Output/` | Contains screenshots of system execution |
+
+---
+
+## 16. Conclusion
+
+The project demonstrates three different approaches to the same private college laboratory equipment scenario.
+
+The comparison shows how access to private data, predefined rules, tools, and LLM-based interaction changes the way a system handles user requests.
+
