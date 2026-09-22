@@ -331,3 +331,4 @@ The project demonstrates three different approaches to the same private college 
 
 The comparison shows how access to private data, predefined rules, tools, and LLM-based interaction changes the way a system handles user requests.
 
+The detailed evaluation of flexibility, decision-making, tool usage, private-data access, multi-step handling, automation, reliability, and suitability is available in `analysis.md`.
